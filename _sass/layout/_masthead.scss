@@ -1,0 +1,130 @@
+/* ==========================================================================
+   MASTHEAD
+   ========================================================================== */
+
+.masthead {
+  position: fixed;
+  background: var(--global-bg-color);
+  height: fit-content;
+  top: 0;
+  width: 100%;
+
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+  z-index: 20;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background: var(--global-border-color);
+    width: 100%;
+  }
+
+  &__inner-wrap {
+    @include container;
+    @include clearfix;
+    padding: 0.5em 1em;
+    font-family: $sans-serif-narrow;
+
+    @include breakpoint($x-large) {
+      max-width: $x-large;
+    }
+
+    nav {
+      z-index: 10;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.masthead__menu {
+
+  ul {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    list-style-type: none;
+  }
+}
+
+.masthead__menu-item {
+  background-color: var(--global-bg-color);
+  display: block;
+  list-style-type: none;
+  white-space: nowrap;
+
+  &--lg {
+    padding-right: 2em;
+    font-weight: 700;
+  }
+}
+
+.masthead__menu-item.selected a {
+  color: var(--global-text-color);
+  font-weight: 700;
+  border-bottom: 2px solid var(--global-text-color);
+  pointer-events: none; /* Move this here */
+  cursor: default; /* Move this here too */
+}
+
+.masthead__menu-item.selected a:hover {
+  color: var(--global-text-color);
+  border-bottom: 2px solid var(--global-text-color);
+  /* No need to repeat pointer-events and cursor here */
+}
+
+/* Institution logos follow the classmate site's masthead placement. */
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.masthead__menu {
+  flex: 1;
+  min-width: 0;
+}
+
+.masthead__branding {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.65rem;
+  background: #fff;
+}
+
+.masthead__logo-link {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.masthead__logo {
+  display: block;
+  width: auto;
+  height: 60px;
+  max-width: none;
+}
+
+@include breakpoint(max-width $small) {
+  .masthead__inner-wrap {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .masthead__menu {
+    flex-basis: 100%;
+  }
+
+  .masthead__logo {
+    height: 48px;
+  }
+}

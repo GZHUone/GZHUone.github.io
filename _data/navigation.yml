@@ -1,0 +1,14 @@
+# Academic Pages navigation: links point to sections on the homepage.
+main:
+  - title: "项目"
+    url: /#projects
+  - title: "动态"
+    url: /#news
+  - title: "经历"
+    url: /#experience
+  - title: "荣誉"
+    url: /#awards
+  - title: "技术能力"
+    url: /#skills
+  - title: "联系"
+    url: /#contact

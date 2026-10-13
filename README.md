@@ -1,40 +1,34 @@
 # 朱冠全的个人主页
 
-独立的静态个人介绍网站，采用参考站的左侧资料栏、简洁学术排版、方形项目卡片与可展开详情。无需安装前端依赖或运行 Jekyll。
+复旦大学电子信息硕士 Guanquan Zhu（朱冠全）的个人主页，基于 Academic Pages 原模板定制。
 
-## 本地查看
+网站地址：<https://gzhuone.github.io/>
 
-直接打开 `index.html`，或在此目录运行：
+## 更新内容
+
+- `_pages/about.md`：简介、项目、经历、奖项、技术能力和联系方式。
+- `_config.yml`：网站地址、姓名、邮箱及侧边栏信息。
+- `_data/navigation.yml`：顶部导航。
+- `images/affiliations/`：复旦大学校标与未来信息创新学院院标。
+- `images/projects/`：项目图片。
+
+## 预览与发布
+
+在配置好 Ruby 3.3 和 Bundler 的环境中运行：
 
 ```sh
-python3 -m http.server 8000 --bind 127.0.0.1
+bundle install
+bundle exec jekyll serve --host 127.0.0.1 --port 4000 --force_polling
 ```
 
-浏览器访问 `http://127.0.0.1:8000`。
+在浏览器打开 `http://localhost:4000`。macOS 上也可双击 `preview.command`。
 
-## GitHub Pages 发布
+提交到 `main` 或 `master` 后，由 `.github/workflows/jekyll.yml` 自动构建并发布至 GitHub Pages。Pages 的 Source 应设置为 **GitHub Actions**。
 
-1. 在 GitHub 账号 `GZHUone` 下创建仓库 `GZHUone.github.io`。
-2. 将本目录内的文件放到该仓库根目录，包括 `index.html`、`assets/`、`404.html` 和 `.nojekyll`。不要把整个文件夹再嵌套一层，也不要上传参考站或原始资料目录。
-3. 在仓库的 **Settings → Pages** 中选择 **Deploy from a branch**，选择上传文件的分支（通常为 `main`）与 **/ (root)**，保存。
-4. 部署完成后访问 `https://gzhuone.github.io/`。
+`Gemfile.lock` 固定构建依赖版本。本地缓存、开发依赖目录和 `_site/` 不提交到仓库。模板中的示例论文、博客、演讲等内容通过 `_config.yml` 排除，不会出现在网站中。
 
-本地完成网页不等于已发布；仍需将文件上传到你的 GitHub 仓库。
+更多维护说明见 [PERSONAL_SITE.md](PERSONAL_SITE.md)。
 
-## 内容来源与后续修改
+## 模板与许可
 
-- 个人介绍、地点、学校、邮箱、GitHub、TEAM NEXUS 地址、个人动态、教育与研究经历、荣誉与奖励、技术能力与兴趣爱好来自更新后的 `../inform.md`。
-- 文案进行了润色，奖项按时间倒序展示；两次国家奖学金与密码数学挑战赛已按要求加粗。硕士毕业时间保留“预计”，香港科技大学（广州）的录取与全奖展示在个人动态中。
-- 项目二、三的文案与实验结果来自 `../project/项目说明.md`，图片来自同目录。
-- 按项目说明的明确要求，项目一完整保留参考站中文版的项目标题、日期、项目原文与 `Kernel_Agent.png` 架构图。
-- 个人头像来自 `../个人头像.png`，微信二维码来自 `../wechat.jpg`；两张图片均直接显示在资料栏，微信二维码支持点击放大。
-- 个人简历显示为“准备中”；不添加谷歌学术入口。
-- 没有复制参考作者的个人照片、邮箱、简历、论文、获奖、其他项目或 GitHub 活动。
-
-主要内容编辑 `index.html`；样式编辑 `assets/css/style.css`；深色模式、手机导航、图片预览和微信弹窗逻辑在 `assets/js/main.js`。
-
-上传简历后，可将 `index.html` 中 `.cv-status` 元素改为指向自己 PDF 的链接。更新头像时替换 `assets/images/avatar.png`；头像的圆形取景由 CSS 控制，原始图片内容保持完整。
-
-## 样式许可
-
-样式参考了用户提供的 MIT 许可模板；原模板许可保留在 `LICENSE`。页面可见的个人资料仅使用用户提供的信息，项目一为用户明确指定保留的例外。
+采用 [Academic Pages](https://github.com/academicpages/academicpages.github.io)，其基础为 [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)。项目展示样式参考用户提供的同学网站 `ryannnice.github.io-master`，原模板 MIT 许可保留在 `LICENSE`。
