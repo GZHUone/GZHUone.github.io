@@ -12,6 +12,20 @@
 - `images/affiliations/`：复旦大学校标与未来信息创新学院院标。
 - `images/projects/`：项目图片。
 
+## 一行命令发布
+
+以后请在 `/Users/guanquan/fudan/个人网站/GZHUone.github.io` 目录中修改网站内容，然后在终端复制执行这一行：
+
+```sh
+cd "/Users/guanquan/fudan/个人网站/GZHUone.github.io" && git add -A && (git diff --cached --quiet || git commit -m "更新个人主页") && git push origin main
+```
+
+命令会提交仓库中的全部改动并推送到 `main`，随后 GitHub Actions 自动构建和发布网页。没有新改动时会跳过提交，继续推送已有提交。
+
+在仓库 [Actions 页面](https://github.com/GZHUone/GZHUone.github.io/actions/workflows/jekyll.yml) 确认发布任务成功后，打开 <https://gzhuone.github.io/> 查看更新。
+
+`academicpages.github.io-master` 是保留的模板副本；上面的命令只提交 `GZHUone.github.io` 目录中的改动。
+
 ## 预览与发布
 
 在配置好 Ruby 3.3 和 Bundler 的环境中运行：
