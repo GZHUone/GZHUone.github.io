@@ -103,6 +103,18 @@ redirect_from:
   </article>
 </div>
 
+## 已发表文章 {#publications}
+
+1. **G. Zhu**, Z. Luo, M. Ye, et al., [Instance Segmentation of Sugar Apple (Annona squamosa) in Natural Orchard Scenes Using an Improved YOLOv9-seg Model](https://www.mdpi.com/2077-0472/15/12/1278). *Agriculture*, 2025, 15(12), 1278.
+
+2. **G. Zhu**, M. Ye, X. Yu, et al., [Optimizing Route Planning via the Weighted Sum Method and Multi-Criteria Decision-Making](https://www.mdpi.com/2227-7390/13/11/1704). *Mathematics*, 2025, 13(11), 1704.
+
+3. X. Zhong, J. Liu, Y. Mao, Y. Zhong, and **G. Zhu**, [RFA2Net: A Receptive Field and Global Attention Enhanced Model for Semantic Segmentation of High-Resolution Remote-Sensing Images](https://www.mdpi.com/2673-2688/7/5/156). *AI*, 2026, 7(5), 156.
+
+4. H. Shi, Z. Luo, Y. Ma, **G. Zhu**, and X. Dai, [SSGTN: Spectral–Spatial Graph Transformer Network for Hyperspectral Image Classification](https://www.mdpi.com/2072-4292/18/2/199). *Remote Sensing*, 2026, 18(2), 199.
+
+5. J. Liu, J. Jiang, H. Liang, **G. Zhu**, et al., [GAE-SpikeYOLO: An Energy-Efficient Tea Bud Detection Model with Spiking Neural Networks for Complex Natural Environments](https://www.mdpi.com/2077-0472/16/3/353). *Agriculture*, 2026, 16(3), 353.
+
 ## 个人动态 {#news}
 
 - **2025 年 9 月** — 推免至**复旦大学未来信息创新学院**，攻读电子信息硕士学位。

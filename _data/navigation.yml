@@ -2,6 +2,8 @@
 main:
   - title: "项目"
     url: /#projects
+  - title: "论文"
+    url: /#publications
   - title: "动态"
     url: /#news
   - title: "经历"

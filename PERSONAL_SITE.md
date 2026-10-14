@@ -4,7 +4,7 @@
 
 ## 更新内容
 
-- `_pages/about.md`：简介、三个项目、动态、经历、奖项、技术能力和联系方式。
+- `_pages/about.md`：简介、三个项目、已发表文章、动态、经历、奖项、技术能力和联系方式。
 - `_config.yml`：姓名、邮箱、GitHub、网站地址和侧边栏资料。
 - `_data/navigation.yml`：顶部导航及对应的首页锚点。
 - `images/avatar.png`、`images/wechat.jpg`：头像与微信二维码。

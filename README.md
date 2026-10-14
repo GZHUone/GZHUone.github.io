@@ -6,7 +6,7 @@
 
 ## 更新内容
 
-- `_pages/about.md`：简介、项目、经历、奖项、技术能力和联系方式。
+- `_pages/about.md`：简介、项目、已发表文章、经历、奖项、技术能力和联系方式。
 - `_config.yml`：网站地址、姓名、邮箱及侧边栏信息。
 - `_data/navigation.yml`：顶部导航。
 - `images/affiliations/`：复旦大学校标与未来信息创新学院院标。
