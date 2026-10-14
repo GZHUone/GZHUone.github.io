@@ -18,27 +18,34 @@ redirect_from:
 
 <div class="project-list">
 
-  <article class="project-card" id="project-deepseek">
+  <article class="project-card" id="project-clformer">
     <header class="project-card__header">
-      <h3 class="project-card__title">项目一｜DeepSeek-V4 国产算力适配与昇腾算子优化</h3>
-      <p class="project-card__meta">2026 年 3 月 – 6 月 · 深圳市大数据研究院</p>
+      <h3 class="project-card__title">项目一｜基于物理约束 CNN-Transformer 的空间望远镜高精度波前检测与端侧部署</h3>
+      <p class="project-card__meta">中国科学院科研项目 · CLFormer · Jetson AGX Orin</p>
     </header>
     <figure class="project-media project-media--wide">
-      <a href="{{ '/images/projects/Kernel_Agent.png' | relative_url }}" aria-label="放大查看昇腾算子优化 Agent 架构">
-        <img src="{{ '/images/projects/Kernel_Agent.png' | relative_url }}" width="1718" height="916" loading="lazy" decoding="async" alt="昇腾算子优化 Agent 架构，包括规划、编码、验证、知识检索、性能画像、诊断、优化与测试">
+      <a href="{{ '/images/projects/segmented-telescope-workflow.png' | relative_url }}" aria-label="放大查看分块望远镜任务架构图">
+        <img src="{{ '/images/projects/segmented-telescope-workflow.png' | relative_url }}" width="1410" height="894" loading="lazy" decoding="async" alt="分块望远镜智能波前感知流程：采集 PSF 图像、预测 Zernike 系数，并通过 Zernike 多项式恢复波前">
       </a>
-      <figcaption>昇腾算子优化 Agent 架构</figcaption>
+      <figcaption>分块望远镜任务架构：PSF 图像采集 → Zernike 系数预测 → 波前重建</figcaption>
+    </figure>
+    <figure class="project-media project-media--wide">
+      <a href="{{ '/images/projects/CLformer.png' | relative_url }}" aria-label="放大查看 CLFormer 模型架构图">
+        <img src="{{ '/images/projects/CLformer.png' | relative_url }}" width="1768" height="920" loading="lazy" decoding="async" alt="CLFormer 模型架构：融合坐标注意力、局部频率自注意力、卷积块注意力与 Vision Transformer，完成 Zernike 系数回归和波前重建">
+      </a>
+      <figcaption>CLFormer 模型架构：空域与频域特征融合、全局建模及波前重建</figcaption>
     </figure>
     <details class="project-details">
       <summary>展开项目详情</summary>
       <div class="project-details__content">
-        <p><strong>项目背景：</strong>作为核心研发，参与深圳河套学院联合华为、智子芯元开展的 DeepSeek-V4-Pro 国产算力全参数后训练。围绕 DeepSeek-V4 在国产算力上的推理与后训练落地，负责昇腾 910C 部署测评、算子优化 Agent 研发及融合反向算子优化。</p>
+        <p><strong>项目背景：</strong>作为核心研发成员，参与中国科学院空间望远镜智能波前检测相关科研项目。针对拼接式空间望远镜传统波前检测算法实时性不足、复杂像差重建精度受限等问题，研究基于物理约束神经网络的高精度波前感知方法，实现从光学仿真、深度学习模型优化到边缘计算设备部署的完整技术链路。</p>
+        <p><strong>主要工作：</strong></p>
         <ul>
-          <li><strong>910C 推理适配与测评（DeepSeek V4 Flash/Pro）：</strong>参与在昇腾 910C 集群部署与测评 DeepSeek V4 Flash/Pro，基于 ShareGPT 等数据对比 vLLM Ascend 与 SGLang 的 Prefill/Decode 性能，为推理框架选型与部署配置提供依据。</li>
-          <li><strong>算子优化 Agent（昇腾迁移与开源）：</strong>针对昇腾算子依赖人工分析与反复试错的问题，基于 MIT Kernel Design Agents 重构适配 910B/910C 的算子知识库、优化规则与性能诊断工具，打通检索→生成→编译→精度/性能验证→保留/回退闭环，开源 Kernel-Agent-Ascend。</li>
-          <li><strong>融合反向算子优化（耗时降低 20.9%）：</strong>基于 msprof 定位 AIV 侧标量地址计算、稀疏访存、同步等待与负载不均；通过地址计算化简、低命中搬运分支裁剪、冗余同步删除、分块/片上缓存优化及向量任务重分配，同时修复缓存扩容引发的尾块越界，算子耗时 22.603→17.88 ms（1.26×），四路输出余弦相似度均为 1.0。</li>
+          <li><strong>物理仿真与数据集构建：</strong>基于光学成像机理与 Zernike 多项式建立波前像差仿真模型，构建包含 <strong>10 万组样本</strong>的数据集，每组包含 5 幅不同离焦量的 PSF 图像及对应的 Zernike 系数标签，模拟噪声与光学失真，为模型训练和泛化评估提供数据支撑。</li>
+          <li><strong>CNN-Transformer 模型设计与优化：</strong>研发 CLFormer 波前检测模型，融合坐标注意力（CA）、局部频率自注意力（LFSA）、卷积块注意力（CBAM）与 Vision Transformer，实现空域、频域特征提取及跨子镜全局建模，完成高维 Zernike 系数回归与波前重建，并通过消融实验验证模块有效性。</li>
+          <li><strong>模型加速与边缘端部署：</strong>基于 PyTorch → ONNX → TensorRT 完成模型转换与推理引擎构建，在 <strong>Jetson AGX Orin</strong> 平台部署，采用 CUDA Graph、Pinned Memory、显存复用及异步数据传输优化推理链路，并开展精度一致性和批量推理测试。</li>
         </ul>
-        <p class="project-card__metrics"><strong>核心成果：</strong>目标配置（BSND/BF16，B=1、S=4096、K=1024）下，融合反向算子耗时 22.603→17.88 ms，降低 20.9%（1.26×）；四路输出余弦相似度均为 1.0，最大相对误差 8.39e-4。</p>
+        <p class="project-card__metrics"><strong>核心成果：</strong>构建 CLFormer 高精度波前检测模型，波前重建 RMSE 达到 <strong>0.01</strong>，相比 ViT 基准模型误差降低 <strong>66.7%</strong>；在 Jetson AGX Orin 平台实现单组 5 幅 PSF 图像约 <strong>1.49 ms</strong> 推理，折合单幅约 <strong>0.298 ms</strong>，较 20 ms 考核指标提升约 <strong>67 倍</strong>，且工程优化前后输出保持逐位一致，满足项目阶段性精度与实时性指标。</p>
       </div>
     </details>
   </article>
