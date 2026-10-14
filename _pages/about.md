@@ -81,23 +81,30 @@ redirect_from:
 
   <article class="project-card" id="project-darc-ft">
     <header class="project-card__header">
-      <h3 class="project-card__title">项目三｜DARC-FT：基于双模型相对置信度引导的大语言模型参数高效微调方法</h3>
+      <h3 class="project-card__title">项目三｜Static Gap GIFT：基于双模型相对置信度引导的大语言模型高效微调</h3>
       <p class="project-card__meta">GIFT · 动态损失加权 · LoRA 参数迁移</p>
     </header>
     <figure class="project-media project-media--wide">
-      <a href="{{ '/images/projects/darc-ft.png' | relative_url }}" aria-label="放大查看 DARC-FT 方法架构"><img src="{{ '/images/projects/darc-ft.png' | relative_url }}" width="1916" height="821" loading="lazy" decoding="async" alt="DARC-FT 双模型相对置信度引导的 LoRA 训练，以及参数迁移、合并与单模型推理架构"></a>
+      <a href="{{ '/images/projects/darc-ft.png' | relative_url }}" aria-label="放大查看 Static Gap-GIFT 方法架构"><img src="{{ '/images/projects/darc-ft.png' | relative_url }}" width="1916" height="821" loading="lazy" decoding="async" alt="Static Gap-GIFT 双模型相对置信度引导的 LoRA 训练，以及参数迁移、合并与单模型推理架构"></a>
       <figcaption>双模型相对置信度引导训练 → 参数迁移与合并 → 单模型推理</figcaption>
+    </figure>
+    <figure class="project-media project-media--wide">
+      <a href="{{ '/images/projects/Gap-GIFT.png' | relative_url }}" aria-label="放大查看 Static Gap-GIFT 数学推理评测结果表">
+        <img src="{{ '/images/projects/Gap-GIFT.png' | relative_url }}" width="1448" height="1086" loading="lazy" decoding="async" alt="Static Gap-GIFT 与 SFT、Shadow-FT、SDFT、LoRE-Adapt、Re-Adapt 在四种基座模型及四项数学推理基准上的结果对比；相比 SFT，四种模型的平均准确率分别提升 17.38、11.91、9.75 和 8.67 个百分点">
+      </a>
+      <figcaption>Static Gap-GIFT 实验结果：四种基座模型在 Math-500、Minerva Math、Olympiad Bench 和 AMC23 上的表现对比</figcaption>
     </figure>
     <details class="project-details">
       <summary>展开项目详情</summary>
       <div class="project-details__content">
-        <p><strong>项目背景：</strong>针对大语言模型领域微调过程中通用能力退化、低置信度 token 干扰训练以及监督信号利用不充分等问题，基于 GIFT 框架，研究双模型相对置信度引导的动态损失加权与跨模型参数迁移方法，提升模型的任务适配能力。</p>
-        <ul>
-          <li><strong>基线复现与评测框架搭建：</strong>基于 Qwen、Llama 系列模型复现 GIFT 的教师引导、LoRA 参数高效微调及 Base-to-Instruct 参数迁移流程，搭建涵盖数据预处理、模型训练、参数合并和 Benchmark 评测的完整实验框架。</li>
-          <li><strong>双模型相对置信度引导机制设计：</strong>提出 DARC-FT 方法，利用 Base Model 与 Instruct Model 对目标 token 的对数概率差衡量相对置信度，通过 Sigmoid 函数与温度参数构建 token 级动态权重，对交叉熵损失进行自适应加权，引导模型重点学习 Instruct 相对 Base 具有更高预测置信度的训练信号。</li>
-          <li><strong>跨模型参数迁移与消融实验：</strong>在冻结 Base 主干参数的条件下训练 LoRA，将学习得到的参数更新合并至 Instruct，实现单模型推理；设计 SFT+Merge、GIFT-BaseT、GIFT 等对照实验，结合数学推理、医疗问答及通用能力评测，分析相对置信度加权机制的有效性与跨领域适用性。</li>
-        </ul>
-        <p class="project-card__metrics"><strong>核心成果：</strong>完成 DARC-FT 方法设计与工程实现，构建双模型置信度计算、动态加权训练、LoRA 参数迁移及单模型推理的完整流程；现有数学任务实验结果提供了初步有效性证据，同时发现医疗任务中仍存在性能局限，为后续置信度约束优化及跨领域泛化研究提供实验依据。</p>
+        <p><strong>项目背景：</strong>针对大语言模型领域微调过程中通用能力退化、低置信度 Token 干扰训练及监督信号利用不充分等问题，基于 GIFT 框架研究双模型相对置信度引导的动态损失加权与跨模型参数迁移方法，提升模型的数学推理与任务适配能力。</p>
+        <p><strong>主要工作：</strong></p>
+        <ol>
+          <li><strong>基线复现与评测框架搭建：</strong>基于 Qwen2.5-7B、Llama-3.2-3B、Llama-3.1-8B 和 DeepSeek-Math-7B 四种基座模型，复现 SFT、Shadow-FT、SDFT、LoRE-Adapt 和 Re-Adapt 等方法，搭建涵盖数据预处理、LoRA 微调、参数合并与数学推理 Benchmark 评测的完整实验流程。</li>
+          <li><strong>双模型相对置信度加权机制设计：</strong>提出 Static Gap-GIFT 方法，利用 Base Model 与 Instruct Model 对目标 Token 的对数概率差衡量相对置信度，通过 Sigmoid 函数及温度参数构建 Token 级动态权重，自适应调整交叉熵损失，强化高价值监督信号的学习，并结合 LoRA 实现参数高效微调。</li>
+          <li><strong>跨模型参数迁移与对比实验：</strong>在冻结 Base 主干参数的条件下训练 LoRA，并将参数增量迁移至 Instruct Model，实现单模型推理；在 Math-500、Minerva Math、Olympiad Bench 和 AMC23 四项数学推理基准上开展实验，对比不同微调方法的性能，验证置信度加权机制的有效性。</li>
+        </ol>
+        <p class="project-card__metrics"><strong>核心成果：</strong>在四项数学推理 Benchmark 上，相比 SFT Baseline，Static Gap-GIFT 在 Qwen2.5-7B、Llama-3.2-3B、Llama-3.1-8B 和 DeepSeek-Math-7B 上的平均准确率分别提升 <strong>17.38、11.91、9.75 和 8.67 个百分点</strong>；</p>
       </div>
     </details>
   </article>
